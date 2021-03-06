@@ -1,38 +1,210 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1, h2, h3, p, a, li, label, input {
+  font-family: sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  margin: 0 150px;
+}
+
+/* navbar */
+#nav {
+  background-color: #030517;
+  padding: 40px;
+}
+
+#nav .nav-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+#nav .nav-container a {
+   color: #E3E3E3;
+   background-color: #dc3545;
+   padding: 10px 20px;
+   margin-top: 15px;
+   border-radius: 5px;
+}
+
+#nav .nav-container a:hover {
+   background-color: #B62C39;
+   transition: background .3s;
+}
+
+#nav h1 {
+   color: #E3E3E3;
+   text-align: center;
+}
+
+/* auth css */
+.auth-body {
+  background-color: #030517;
+  height: 100vh;
+}
+
+/* form */
+
+.form-login {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin-top: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.form-login #login-btn {
+  border: 1px solid #e3e3e3;
+  background-color: #030517;
+  border-radius: 5px;
+  height: 45px;
+  margin-top: 30px;
+  color: #E3E3E3;
+  font-weight: bold;
+  padding: 10px 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-login #login-btn:hover {
+  border-color: #e79e19;
+  color: #e79e19;
+  cursor: pointer;
+}
+
+/* chat box body */
+.chatbox-body {
+  background-color: #030517;
+  height: 100vh;
+  display: flex;
+}
+
+.chatbox-body h2 {
+  color: #fff;
+}
+
+/* chatbox left side */
+
+.chatbox-body .chatbox-left {
+  background-color: #020414;
+  width: 30vw;
+}
+
+.chatbox-body .chatbox-left .topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 50px;
+}
+
+.chatbox-body .chatbox-left .topbar h3 {
+  color: #E79E19;
+}
+
+.chatbox-body .chatbox-left .topbar #logout-btn {
+  padding: 7px 20px;
+  border-radius: 5px;
+  background-color: #FF3D50;
+  color: #E3E3E3;
+  border: 0px;
+}
+
+.chatbox-body .chatbox-left .topbar #logout-btn:hover {
+  background-color: #cc3040;
+  cursor: pointer;
+}
+
+.chatbox-body .chatbox-left .self {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 50px;
+  align-items: center;
+}
+
+.chatbox-body .chatbox-left .self img {
+  width: 35px;
+  border-radius: 50%;
+}
+
+.chatbox-body .chatbox-left .self p {
+  color: #e3e3e3;
+  padding-left: 20px;
+}
+
+.chatbox-body .chatbox-left .user {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 40px;
+  align-items: center;
+  padding: 10px;
+}
+
+.chatbox-body .chatbox-left .user img {
+  width: 35px;
+  border-radius: 50%;
+}
+
+.chatbox-body .chatbox-left .user p {
+  color: #cccccc;
+  padding-left: 20px;
+}
+
+.chatbox-body .chatbox-left .user:hover {
+  color: #fff;
+  background-color: #676973;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* chatbox right side */
+.chatbox-body .chatbox-right {
+  width: 70vw;
+}
+
+.chatbox-body .chatbox-right .top-bar {
+  margin-bottom: 40px;
+}
+
+.chatbox-body .chatbox-right .top-bar p {
+  color: #e3e3e3;
+  padding: 30px 50px;
+}
+
+.chatbox-body .chatbox-right .messages {
+  overflow: scroll;
+  min-height: 70vh;
+  max-height: 70vh;
+}
+
+.chatbox-body .chatbox-right .messages .message {
+  display: flex;
+  margin-left: 45px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chatbox-body .chatbox-right .messages .message img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.chatbox-body .chatbox-right .messages .message .message-bottom {
+  color: #e3e3e3;
+  margin-left: 15px;
+}
+
+.chatbox-body .chatbox-right .messages .message .message-bottom p {
+  padding-top: 10px;
+}
+
+.chatbox-body .chatbox-right .input-box {
+  bottom: 30px;
+  position: fixed;
 }
