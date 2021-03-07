@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import "firebase/firestore";
 import "firebase/auth";
 import firebase from "firebase/app";
 import Users from './Users';
+import Chatarea from './Chatarea'
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -15,115 +16,87 @@ const db = firebase.firestore();
 
 const Chatbox = () => {
    const [user] = useAuthState(auth);
+   const [users, setUsers] = useState([]);
+   const [isTextArea, setIsTextArea] = useState(false);
+   const [otherUserUID, setOtherUserUID] = useState();
+   const [otherUserEmail, setOtherUserEmail] = useState();
 
-   const logout = (e) => {
-      e.preventDefault();
+   let docRef = db.collection("user").doc(user.uid);
+
+   const getUsers = () => {
+      let usersSet = [];
+      db.collection('user').get()
+         .then((data) => {
+            data.docs.forEach(doc => {
+               usersSet.push(doc.data());
+            });
+            setUsers(usersSet);
+         })
+         .catch(err => console.log(err));
+      return usersSet;
    }
 
+   //create text area
+   const createTextArea = (uid, email) => {
+      setIsTextArea(true);
+      setOtherUserUID(uid);
+      setOtherUserEmail(email);
+   }
 
+   useEffect(() => {
+      docRef.get()
+         .then((doc) => {
+            if (doc.exists) {
+               console.log("Doc exists");
+            } else {
+               // doc.data() will be undefined in this case
+               console.log("No such document! Adding it now");
+               db.collection('user').doc(user.uid).set({
+                  uid: user.uid,
+                  email: user.email,
+                  photoURL: user.photoURL,
+                  chats: []
+               });
+            }
+         }).catch((error) => {
+            console.log("Error getting document:", error);
+         });
+
+      getUsers();
+   }, []);
+
+   console.log(users);
    return (
       <>
          <div className="chatbox-body">
             <div className="chatbox-left">
                <div className="topbar">
                   <h3>Connect Me</h3>
-                  <button id="logout-btn" onClick={logout}>Log Out</button>
+                  <button id="logout-btn" onClick={() => auth.signOut()}>Log Out</button>
                </div>
                <div className="self">
-                  <img src={user.photoURL} alt="profile-image" />
+                  <img src={user.photoURL} alt="profile" />
                   <p>{user.email}</p>
                </div>
                <hr />
                <div className="users">
-                  <div className="user">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <p>{user.email}</p>
-                  </div>
-                  <div className="user">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <p>{user.email}</p>
-                  </div>
-                  <div className="user">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <p>{user.email}</p>
-                  </div>
+                  {
+                     users.map((data) => {
+                        const { uid, photoURL, email } = data;
+                        if (user.uid !== uid) {
+                           return (
+                              <div onClick={() => createTextArea(uid, email)} key={uid} className="user">
+                                 <img src={photoURL} alt="profile" />
+                                 <p>{email}</p>
+                              </div>
+                           )
+                        }
+                     })
+                  }
                </div>
             </div>
             <div className="chatbox-right">
-               <div className="top-bar">
-                  <p>{user.email}</p>
-                  <hr />
-               </div>
-               <div className="messages">
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>Hello there?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>How are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-                  <div className="message">
-                     <img src={user.photoURL} alt="profile-image" />
-                     <div className="message-bottom">
-                        <h3 className="username">{user.email}</h3>
-                        <p>I am good, how are you?</p>
-                     </div>
-                  </div>
-               </div>
-               <div className="input-box">
-                  <form>
-                     <input type="text" name="message" id="input-message" />
-                  </form>
-               </div>
+               {isTextArea ? <Chatarea otherUserUID={otherUserUID} otherUserEmail={otherUserEmail} currentUserUID={user.uid} /> : null}
             </div>
          </div>
       </>

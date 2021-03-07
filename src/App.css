@@ -180,6 +180,7 @@ h1, h2, h3, p, a, li, label, input {
   overflow: scroll;
   min-height: 70vh;
   max-height: 70vh;
+  max-width: 70vw;
 }
 
 .chatbox-body .chatbox-right .messages .message {
@@ -195,6 +196,10 @@ h1, h2, h3, p, a, li, label, input {
   border-radius: 50%;
 }
 
+.chatbox-body .chatbox-right .messages .message h3 {
+  font-size: 1rem;
+}
+
 .chatbox-body .chatbox-right .messages .message .message-bottom {
   color: #e3e3e3;
   margin-left: 15px;
@@ -205,6 +210,35 @@ h1, h2, h3, p, a, li, label, input {
 }
 
 .chatbox-body .chatbox-right .input-box {
-  bottom: 30px;
-  position: fixed;
+  /* bottom: 20px; */
+  /* position: fixed; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.chatbox-body .chatbox-right .input-box form #input-message {
+  width: 53rem;
+  margin-left: 40px;
+  padding: 10px 20px;
+  background-color: #1C1D2E;
+  font-size: 1rem;
+  color: #e3e3e3;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.chatbox-body .chatbox-right .input-box form #input-submit {
+  margin-left: 10px;
+  padding: 10px 25px;
+  background-color: #E79E19;
+  color: #e3e3e3;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.chatbox-body .chatbox-right .input-box form #input-submit:hover {
+  cursor: pointer;
+  background-color: #b87e14;
 }
