@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import "firebase/firestore";
 import "firebase/auth";
 import firebase from "firebase/app";
+import ScrollBottom from './ScrollBottom';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -18,10 +19,6 @@ const Chatarea = (props) => {
    //gets the current state of the logged in user 
    const [user] = useAuthState(auth);
    const [messageDocID, setMessageDocID] = useState();
-
-   //scrolls to the bottom when a new message is entered
-   const scrollTo = useRef();
-
    const [formValue, setFormValue] = useState('');
 
    const messageRef = db.collection('message').doc(messageDocID).collection('messages');
@@ -53,15 +50,12 @@ const Chatarea = (props) => {
       });
 
       setFormValue('');
-
-      scrollTo.current.scrollIntoView({ behavior: 'smooth' });
    }
 
    // useEffect(() => {
    //    createMessageDocID();
    //    // eslint-disable-next-line
    // }, []);
-
 
    useEffect(() => {
       createMessageDocID();
@@ -100,7 +94,7 @@ const Chatarea = (props) => {
                   );
                })
             }
-            <div id="bottom" ref={scrollTo}></div>
+            <ScrollBottom />
          </div>
          <div className="input-box">
             <form onSubmit={sendMessage}>
