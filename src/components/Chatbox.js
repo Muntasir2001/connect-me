@@ -61,6 +61,7 @@ const Chatbox = () => {
          });
 
       getUsers();
+      // eslint-disable-next-line
    }, []);
 
    return (
@@ -78,6 +79,7 @@ const Chatbox = () => {
                <hr />
                <div className="users">
                   {
+                     // eslint-disable-next-line
                      users.map((data) => {
                         const { uid, photoURL, email } = data;
                         if (user.uid !== uid) {

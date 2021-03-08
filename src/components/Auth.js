@@ -9,7 +9,6 @@ import firebase from "firebase/app";
 import "../firebase.js"
 
 const auth = firebase.auth();
-const db = firebase.firestore();
 
 const Auth = () => {
    //handle login

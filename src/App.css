@@ -181,6 +181,7 @@ h1, h2, h3, p, a, li, label, input {
   min-height: 70vh;
   max-height: 70vh;
   max-width: 70vw;
+  overflow-anchor: none;
 }
 
 .chatbox-body .chatbox-right .messages .message {

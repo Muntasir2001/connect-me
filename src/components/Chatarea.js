@@ -58,8 +58,10 @@ const Chatarea = (props) => {
 
    useEffect(() => {
       createMessageDocID();
-   }, [createMessageDocID]);
+      // eslint-disable-next-line
+   }, []);
 
+   // eslint-disable-next-line
    useEffect(() => {
       db.collection('message').doc(messageDocID).get()
          .then(doc => {
@@ -72,6 +74,7 @@ const Chatarea = (props) => {
                });
             }
          });
+      // eslint-disable-next-line
    }, []);
 
    return (
@@ -94,7 +97,7 @@ const Chatarea = (props) => {
                   );
                })
             }
-            <div ref={scrollTo}></div>
+            <div id="bottom" ref={scrollTo}></div>
          </div>
          <div className="input-box">
             <form onSubmit={sendMessage}>
