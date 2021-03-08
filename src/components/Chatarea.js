@@ -30,6 +30,7 @@ const Chatarea = (props) => {
    const query = messageRef.orderBy('sentAt').limit(100);
    const [chatMessages] = useCollectionData(query, { idField: 'id' });
 
+   // eslint-disable-next-line
    const createMessageDocID = () => {
       if (otherUserUID > currentUserUID) {
          setMessageDocID(otherUserUID + currentUserUID);
@@ -56,13 +57,15 @@ const Chatarea = (props) => {
       scrollTo.current.scrollIntoView({ behavior: 'smooth' });
    }
 
+   // useEffect(() => {
+   //    createMessageDocID();
+   //    // eslint-disable-next-line
+   // }, []);
+
+
    useEffect(() => {
       createMessageDocID();
-      // eslint-disable-next-line
-   }, []);
 
-   // eslint-disable-next-line
-   useEffect(() => {
       db.collection('message').doc(messageDocID).get()
          .then(doc => {
             if (doc.exists) {
@@ -74,8 +77,8 @@ const Chatarea = (props) => {
                });
             }
          });
-      // eslint-disable-next-line
-   }, []);
+
+   }, [messageDocID, createMessageDocID]);
 
    return (
       <>
