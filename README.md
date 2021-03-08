@@ -2,4 +2,4 @@
 A chat application created with React.js and Firebase with sole objective to learn more about React.js and how firebase works with React.js.
 
 # Website
-coming soon :)
+https://connectme.netlify.app/
