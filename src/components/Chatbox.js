@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import "firebase/firestore";
 import "firebase/auth";
 import firebase from "firebase/app";
-import Users from './Users';
 import Chatarea from './Chatarea'
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import "../firebase.js"
 
@@ -65,7 +63,6 @@ const Chatbox = () => {
       getUsers();
    }, []);
 
-   console.log(users);
    return (
       <>
          <div className="chatbox-body">
@@ -89,7 +86,7 @@ const Chatbox = () => {
                                  <img src={photoURL} alt="profile" />
                                  <p>{email}</p>
                               </div>
-                           )
+                           );
                         }
                      })
                   }

@@ -1,15 +1,10 @@
 import '../App.css';
-import App from './App';
-import Chatbox from './Chatbox.js';
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 
 import "firebase/firestore";
 import "firebase/auth";
 import firebase from "firebase/app";
-
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import "../firebase.js"
 

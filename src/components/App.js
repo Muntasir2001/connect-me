@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import '../App.css';
 import Auth from './Auth';
@@ -10,8 +10,6 @@ import "firebase/auth";
 import "firebase/firestore";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-
 
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -22,6 +20,7 @@ const App = () => {
 
   return (
     <>
+      {/* checks to see whether if user is logged in or not */}
       {user ? <Chatbox /> : <Auth />}
     </>
   )
