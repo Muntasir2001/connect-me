@@ -137,6 +137,11 @@ h1, h2, h3, p, a, li, label, input {
   padding-left: 20px;
 }
 
+.chatbox-body .chatbox-left .users {
+  overflow: scroll;
+  height: 79%;
+}
+
 .chatbox-body .chatbox-left .user {
   display: flex;
   justify-content: flex-start;
