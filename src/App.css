@@ -248,3 +248,82 @@ h1, h2, h3, p, a, li, label, input {
   cursor: pointer;
   background-color: #b87e14;
 }
+
+/* responsive css */
+@media only screen and (max-width: 1155px) {
+  .chatbox-body .chatbox-left .self {
+    max-width: 250px;
+    overflow: hidden;
+  }
+
+  .chatbox-body .chatbox-left .user {
+    max-width: 250px;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .chatbox-body .chatbox-left .topbar {
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .chatbox-body .chatbox-left .topbar #logout-btn {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .chatbox-body .chatbox-left {
+    width: 40vw;
+  }
+
+  .chatbox-body .chatbox-right {
+    width: 60vw;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .chatbox-body {
+    min-height: 100vh;
+  }
+
+  .chatbox-body .chatbox-left .user p, .chatbox-body .chatbox-left .self p {
+    display: none;
+  }
+
+  .chatbox-body .chatbox-left {
+    width: 30vw;
+  }
+
+  .chatbox-body .chatbox-right {
+    width: 60vw;
+  }
+
+  .chatbox-body .chatbox-left .topbar #logout-btn {
+    border-radius: 1000px;
+  }
+
+  .chatbox-body .chatbox-left .self {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+  }
+
+  .chatbox-body .chatbox-left .users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+  }
+
+  .chatbox-body .chatbox-left .user {
+    margin: 0;
+    margin-top: 10px;
+  }
+}
