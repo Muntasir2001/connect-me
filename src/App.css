@@ -186,7 +186,6 @@ h1, h2, h3, p, a, li, label, input {
   min-height: 70vh;
   max-height: 70vh;
   max-width: 70vw;
-  overflow-anchor: none;
 }
 
 .chatbox-body .chatbox-right .messages .message {
@@ -286,20 +285,12 @@ h1, h2, h3, p, a, li, label, input {
 }
 
 @media only screen and (max-width: 550px) {
-  .chatbox-body {
-    min-height: 100vh;
-  }
-
   .chatbox-body .chatbox-left .user p, .chatbox-body .chatbox-left .self p {
     display: none;
   }
 
   .chatbox-body .chatbox-left {
     width: 30vw;
-  }
-
-  .chatbox-body .chatbox-right {
-    width: 60vw;
   }
 
   .chatbox-body .chatbox-left .topbar #logout-btn {
@@ -318,7 +309,7 @@ h1, h2, h3, p, a, li, label, input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    height: 500px;
     overflow-y: scroll;
   }
 
@@ -326,4 +317,51 @@ h1, h2, h3, p, a, li, label, input {
     margin: 0;
     margin-top: 10px;
   }
+
+  .chatbox-body .chatbox-right {
+    min-width: 70vw;
+    max-width: 70vw;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chatbox-body .chatbox-right .messages {
+    overflow-y: scroll;
+    overflow-x: scroll;
+    /* max-width: 260px; */
+    overflow-wrap: break-word;
+  }
+
+  .chatbox-body .chatbox-right .messages .message .message-bottom .username {
+    max-width: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .chatbox-body .chatbox-right .messages .message .message-bottom P {
+    width: inherit;
+    display: inline-block;
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  .chatbox-body .chatbox-right .input-box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .chatbox-body .chatbox-right .input-box form #input-message {
+    max-width: 13rem;
+    overflow-wrap: break-word;
+  }
+
+.chatbox-body .chatbox-right .input-box form #input-submit {
+    margin-top: 10px;
+  }
+
+
 }
