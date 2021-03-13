@@ -274,9 +274,14 @@ h1, h2, h3, p, a, li, label, input {
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 700px) and (min-width: 550px) {
+  .chatbox-body {
+    height: 200vh;
+  }
+
   .chatbox-body .chatbox-left {
     width: 40vw;
+    height: auto;
   }
 
   .chatbox-body .chatbox-right {
@@ -285,12 +290,21 @@ h1, h2, h3, p, a, li, label, input {
 }
 
 @media only screen and (max-width: 550px) {
+  .chatbox-body {
+    max-height: 100%;
+    overflow: hidden;
+  }
+
   .chatbox-body .chatbox-left .user p, .chatbox-body .chatbox-left .self p {
     display: none;
   }
 
   .chatbox-body .chatbox-left {
     width: 30vw;
+  }
+
+  .chatbox-body .chatbox-left .upper-bar {
+    height: 190px;
   }
 
   .chatbox-body .chatbox-left .topbar #logout-btn {
@@ -302,15 +316,17 @@ h1, h2, h3, p, a, li, label, input {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px 0px;
+    margin: 10px 0px;
   }
 
   .chatbox-body .chatbox-left .users {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 500px;
+    margin: 15px 0;
+    /* display: flex; */
+    max-height: 500px;
+    /* flex-direction: column; */
     overflow-y: scroll;
+    /* -webkit-overflow-scrolling: touch; */
+    /* align-items: center; */
   }
 
   .chatbox-body .chatbox-left .user {
@@ -318,10 +334,15 @@ h1, h2, h3, p, a, li, label, input {
     margin-top: 10px;
   }
 
+  .chatbox-body .chatbox-left .user img {
+    margin: 0px auto;
+  }
+
   .chatbox-body .chatbox-right {
     min-width: 70vw;
     max-width: 70vw;
     overflow-x: hidden;
+    height: auto;
     text-overflow: ellipsis;
   }
 

@@ -68,13 +68,15 @@ const Chatbox = () => {
       <>
          <div className="chatbox-body">
             <div className="chatbox-left">
-               <div className="topbar">
-                  <h3>Connect Me</h3>
-                  <button id="logout-btn" onClick={() => auth.signOut()}>Log Out</button>
-               </div>
-               <div className="self">
-                  <img src={user.photoURL} alt="profile" />
-                  <p>{user.email}</p>
+               <div className="upper-bar">
+                  <div className="topbar">
+                     <h3>Connect Me</h3>
+                     <button id="logout-btn" onClick={() => auth.signOut()}>Log Out</button>
+                  </div>
+                  <div className="self">
+                     <img src={user.photoURL} alt="profile" />
+                     <p>{user.email}</p>
+                  </div>
                </div>
                <hr />
                <div className="users">
