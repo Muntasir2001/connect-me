@@ -346,6 +346,10 @@ h1, h2, h3, p, a, li, label, input {
     text-overflow: ellipsis;
   }
 
+  .chatbox-body .chatbox-right .top-bar p {
+    padding-left: 10px;
+  }
+
   .chatbox-body .chatbox-right .messages {
     overflow-y: scroll;
     overflow-x: scroll;
@@ -353,19 +357,26 @@ h1, h2, h3, p, a, li, label, input {
     overflow-wrap: break-word;
   }
 
+  .chatbox-body .chatbox-right .messages .message {
+    margin-left: 10px;
+  }
+
   .chatbox-body .chatbox-right .messages .message .message-bottom .username {
     max-width: inherit;
+    font-size: 13px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .chatbox-body .chatbox-right .messages .message .message-bottom P {
     width: inherit;
+    font-size: 12px;
     display: inline-block;
     word-break: break-word;
     white-space: normal;
     overflow-wrap: break-word;
+
   }
 
   .chatbox-body .chatbox-right .input-box form {
