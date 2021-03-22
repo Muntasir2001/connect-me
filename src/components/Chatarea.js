@@ -94,7 +94,7 @@ const Chatarea = (props) => {
                   );
                })
             }
-            <ScrollBottom />
+            {/* <ScrollBottom /> */}
          </div>
          <div className="input-box">
             <form onSubmit={sendMessage}>
