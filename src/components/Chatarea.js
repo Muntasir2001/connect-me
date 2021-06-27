@@ -15,7 +15,6 @@ const db = firebase.firestore();
 
 const Chatarea = (props) => {
     const { otherUserUID, otherUserEmail, currentUserUID } = props;
-
     //gets the current state of the logged in user
     const [user] = useAuthState(auth);
     const [messageDocID, setMessageDocID] = useState();
@@ -41,7 +40,6 @@ const Chatarea = (props) => {
         e.preventDefault();
 
         const { photoURL } = user;
-
         await messageRef.add({
             text: formValue,
             sentAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -66,12 +64,10 @@ const Chatarea = (props) => {
                     console.log('chat exists');
                 } else {
                     console.log('No such chat! Adding it now');
-                    db.collection('message').doc(MD_ID).set({
-                    });
+                    db.collection('message').doc(MD_ID).set({});
                 }
             });
     };
-
     return (
         <>
             <div className='top-bar'>
