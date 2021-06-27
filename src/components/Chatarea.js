@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import 'firebase/firestore';
 import 'firebase/auth';
 import firebase from 'firebase/app';
-import ScrollBottom from './ScrollBottom';
+// import ScrollBottom from './ScrollBottom';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
